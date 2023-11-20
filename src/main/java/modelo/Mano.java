@@ -21,4 +21,8 @@ public class Mano {
     public void botarCarta(Carta carta){
         cartasMano.remove(carta);
     }
+
+    public int size() {
+        return cartasMano.size();
+    }
 }
