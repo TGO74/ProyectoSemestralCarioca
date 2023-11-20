@@ -10,3 +10,5 @@ Falta hacer un menu
 Falta tener un prototipo funcional del proyecto
 
 recordatorio: hacer UML completo.
+
+// 
