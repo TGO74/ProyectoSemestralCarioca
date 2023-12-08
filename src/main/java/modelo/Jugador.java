@@ -40,16 +40,15 @@ public class Jugador {
         mano.botarCarta(carta);
     }
 
-    public void mostrarMano(){
-        System.out.println("Mano de " + this.nombre);
+    public String mostrarMano(){
+        String cartasMano = "Mano de " + this.nombre + "\\n";
         for(Carta carta : mano.getCartasMano()){
-            System.out.println(carta.toString());
+            cartasMano += carta.toString() + "\\n";
         }
+        return cartasMano;
     }
 
     public void jugar(){
         System.out.println("Jugando " + this.nombre);
     }
-
-
 }
