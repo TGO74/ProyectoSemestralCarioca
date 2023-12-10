@@ -1,9 +1,11 @@
 package Controller;
 
-import modelo.JuegoCarioca;
+import modelo.Carta;
 import modelo.Jugador;
+import modelo.JuegoCarioca;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.List;
 
 public class JuegoCariocaController {
 
@@ -13,27 +15,66 @@ public class JuegoCariocaController {
         this.juegoCarioca = juegoCarioca;
     }
 
-    public void agregarJugador(String nombre){
-        juegoCarioca.agregarJugador(new Jugador(nombre));
+    //getJuegoCarioca
+    public JuegoCarioca getJuegoCarioca(){
+        return juegoCarioca;
     }
 
-    public void iniciarJuego(){
-        juegoCarioca.iniciarJuego();
+    public void agregarJugador(String nombre) {
+        juegoCarioca.agregarJugador(nombre);
     }
 
-    public void realizarRondas(){
-        juegoCarioca.realizarRondas();
+    public void iniciarJuego() {
+        juegoCarioca.iniciarJuego(juegoCarioca.getJugadores());
     }
 
-    public void finalizarJuego(){
-        juegoCarioca.finalizarJuego();
+    public void realizarRondas() {
+        juegoCarioca.realizarRondas(juegoCarioca.getJugadores());
     }
 
-    public ArrayList<Jugador> getJugadores(){
+    public void finalizarJuego() {
+        juegoCarioca.finalizarJuego(juegoCarioca.getJugadores());
+    }
+
+    public List<Jugador> getJugadores() {
         return juegoCarioca.getJugadores();
     }
 
     public Jugador getGanador() {
         return juegoCarioca.getGanador();
+    }
+
+    public void setJuegoCarioca(JuegoCarioca juegoCarioca) {
+        this.juegoCarioca = juegoCarioca;
+    }
+
+    public void getResultados() {
+        juegoCarioca.getResultado(juegoCarioca.getJugadores());
+    }
+
+    public void guardarPartida() throws IOException {
+        juegoCarioca.guardarPartida(getJugadores().toString());
+    }
+
+    public void mostrarPartidas() {
+        juegoCarioca.mostrarPartidas();
+    }
+
+    public void mostrarJugadores() {
+        juegoCarioca.mostrarJugadores();
+    }
+
+    public void realizarRecogerCarta(Jugador jugador) {
+        Carta cartaRecogida = juegoCarioca.recogerCarta();
+        jugador.getMano().agregarCarta(cartaRecogida);
+    }
+
+    public void realizarBotarCarta(Jugador jugador, Carta carta) {
+        jugador.getMano().botarCarta(carta);
+    }
+
+    //getJugadorActual
+    public Jugador getJugadorActual(){
+        return juegoCarioca.getJugadorActual();
     }
 }

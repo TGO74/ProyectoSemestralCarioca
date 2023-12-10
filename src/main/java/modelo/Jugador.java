@@ -1,5 +1,9 @@
 package modelo;
 
+import java.util.ArrayList;
+
+
+
 public class Jugador {
 
     Mano mano = new Mano();
@@ -7,6 +11,8 @@ public class Jugador {
     private String nombre;
 
     private int puntos;
+
+    private int puesto;
 
     public Jugador(String nombre){
         this.nombre = nombre;
@@ -32,23 +38,50 @@ public class Jugador {
         this.puntos = puntos;
     }
 
+    public int getPuesto() {
+        return this.puesto;
+    }
+
+    public void setPuesto(int puesto) {
+        this.puesto = puesto;
+    }
+
+    //Metodo recoger carta
     public void recogerCarta(Carta carta){
         mano.agregarCarta(carta);
     }
+
 
     public void botarCarta(Carta carta){
         mano.botarCarta(carta);
     }
 
     public String mostrarMano(){
-        String cartasMano = "Mano de " + this.nombre + "\\n";
+        System.out.println("Mano de " + this.nombre);
         for(Carta carta : mano.getCartasMano()){
-            cartasMano += carta.toString() + "\\n";
+            System.out.println(carta.toString());
         }
-        return cartasMano;
+        return null;
     }
+
+
+
+
 
     public void jugar(){
         System.out.println("Jugando " + this.nombre);
     }
+
+    //toString
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "mano=" + mano +
+                ", nombre='" + nombre + '\'' +
+                ", puntos=" + puntos +
+                ", puesto=" + puesto +
+                '}';
+    }
+
+
 }

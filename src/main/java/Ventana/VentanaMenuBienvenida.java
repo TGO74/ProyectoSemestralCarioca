@@ -4,13 +4,16 @@ import Controller.JuegoCariocaController;
 import modelo.Jugador;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VentanaMenuBienvenida extends JFrame implements ActionListener {
 
     private JLabel textoMenu;
-    private JButton botonAgregarJugadores;
     private JButton botonIniciarJuego;
+    private JButton botonPartidasJugadas;
+    private JButton botonReglas;
+
     private JuegoCariocaController controller;
 
     public VentanaMenuBienvenida(JuegoCariocaController controller) {
@@ -24,8 +27,9 @@ public class VentanaMenuBienvenida extends JFrame implements ActionListener {
 
     private void generarElementosVentana() {
         generarMensajeMenu();
-        generarBotonAgregarJugadores();
         generarBotonIniciarJuego();
+        generarBotonPartidasJugadas();
+        generarBotonReglas();
     }
 
     private void generarMensajeMenu() {
@@ -34,43 +38,41 @@ public class VentanaMenuBienvenida extends JFrame implements ActionListener {
         add(textoMenu);
     }
 
-    private void generarBotonAgregarJugadores() {
-        botonAgregarJugadores = new JButton("Agregar número de jugadores");
-        botonAgregarJugadores.setBounds(175, 100, 150, 40);
-        add(botonAgregarJugadores);
-        botonAgregarJugadores.addActionListener(this);
-    }
-
     private void generarBotonIniciarJuego() {
-        botonIniciarJuego = new JButton("Iniciar Juego");
+        botonIniciarJuego = new JButton("Nueva Partida");
         botonIniciarJuego.setBounds(175, 180, 150, 40);
         add(botonIniciarJuego);
         botonIniciarJuego.addActionListener(this);
     }
 
+    private void generarBotonPartidasJugadas() {
+        botonPartidasJugadas = new JButton("Mostrar Partidas Jugadas");
+        botonPartidasJugadas.setBounds(175, 260, 150, 40);
+        add(botonPartidasJugadas);
+        botonPartidasJugadas.addActionListener(this);
+    }
+
+    private void generarBotonReglas() {
+        botonReglas = new JButton("Reglas del Juego");
+        botonReglas.setBounds(175, 340, 150, 40);
+        add(botonReglas);
+        botonReglas.addActionListener(this);
+    }
+
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == botonAgregarJugadores) {
-            int numJugadores = Integer.parseInt(JOptionPane.showInputDialog(this, "Introduce el número de jugadores:"));
-            for (int i = 0; i < numJugadores; i++) {
-                String nombre = JOptionPane.showInputDialog(this, "Introduce el nombre del jugador " + (i + 1) + ":");
-                controller.agregarJugador(nombre);
-            }
-        } else if (e.getSource() == botonIniciarJuego) {
-            controller.iniciarJuego();
-            JOptionPane.showMessageDialog(this, "El juego ha comenzado!");
-            for (Jugador jugador : controller.getJugadores()) {
-                String cartas = jugador.mostrarMano();
-                JOptionPane.showMessageDialog(this, "Las cartas de " + jugador.getNombre() + " son:\n" + cartas);
-            }
-            controller.realizarRondas();
-            controller.finalizarJuego();
-            Jugador ganador = controller.getGanador();
-            if (ganador != null) {
-                JOptionPane.showMessageDialog(this, "El ganador es: " + ganador.getNombre());
-            } else {
-                JOptionPane.showMessageDialog(this, "No hay ganador en este juego.");
-            }
+        if (e.getSource() == botonIniciarJuego) {
+            // Llamado ventana agregar datos
+            VentanaAgregarDatosJuego ventanaAgregarDatosJuego = new VentanaAgregarDatosJuego(controller);
+            ventanaAgregarDatosJuego.setVisible(true);
+
+            // Puedes llamar a métodos del controlador u otras acciones aquí
+        } else if (e.getSource() == botonPartidasJugadas) {
+            // Lógica para mostrar las partidas jugadas...
+            // Puedes llamar a métodos del controlador u otras acciones aquí
+        } else if (e.getSource() == botonReglas) {
+            // LLamado ventana reglas
+            VentanaReglas ventanaReglas = new VentanaReglas();
+            // Puedes llamar a métodos del controlador u otras acciones aquí
         }
     }
 }
-
