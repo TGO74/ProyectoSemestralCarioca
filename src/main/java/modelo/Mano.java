@@ -14,6 +14,7 @@ public class Mano {
         return cartasMano;
             }
 
+   //Metodo agregar carta a la mano del jugador desde la baraja
     public void agregarCarta(Carta carta){
         cartasMano.add(carta);
     }
