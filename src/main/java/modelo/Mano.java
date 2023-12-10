@@ -10,10 +10,11 @@ public class Mano {
 
     }
 
-            public ArrayList<Carta> getCartasMano() {
+    public ArrayList<Carta> getCartasMano() {
         return cartasMano;
-            }
+    }
 
+    //Metodo agregar carta a la mano del jugador desde la baraja
     public void agregarCarta(Carta carta){
         cartasMano.add(carta);
     }
