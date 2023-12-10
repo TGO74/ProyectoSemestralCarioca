@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import modelo.Carta;
 import modelo.Jugador;

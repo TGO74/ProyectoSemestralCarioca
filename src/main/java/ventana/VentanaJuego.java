@@ -5,19 +5,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import controller.JuegoCariocaController;
 import modelo.Carta;
 
 public class VentanaJuego extends JFrame implements ActionListener {
 
-    private JuegoCariocaController controller;
+    private Controller.JuegoCariocaController controller;
     private JLabel labelCartasJugador;
     private JLabel labelMazo;
     private JLabel labelNumeroRonda;
     private JButton botonRealizarAccion;
     private JButton botonTerminarPartida;
 
-    public VentanaJuego(JuegoCariocaController controller) {
+    public VentanaJuego(Controller.JuegoCariocaController controller) {
         super("Juego de Carioca");
         this.controller = controller;
         setSize(800, 600);
@@ -53,6 +52,11 @@ public class VentanaJuego extends JFrame implements ActionListener {
         botonBotarCarta.setBounds(700, 500, 150, 40);
         add(botonBotarCarta);
         botonBotarCarta.addActionListener(this);
+    }
+
+    //setvisible(boolean visible)
+    public void setVisible(boolean visible){
+        super.setVisible(visible);
     }
 
 

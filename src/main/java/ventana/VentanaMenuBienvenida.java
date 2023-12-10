@@ -1,7 +1,10 @@
 package ventana;
 
-import controller.JuegoCariocaController;
+import dato.GestorDePartidas;
 import modelo.Jugador;
+import modelo.JuegoCarioca;
+
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,9 +17,9 @@ public class VentanaMenuBienvenida extends JFrame implements ActionListener {
     private JButton botonPartidasJugadas;
     private JButton botonReglas;
 
-    private JuegoCariocaController controller;
+    private Controller.JuegoCariocaController controller;
 
-    public VentanaMenuBienvenida(JuegoCariocaController controller) {
+    public VentanaMenuBienvenida(Controller.JuegoCariocaController controller) {
         super("Menu Carioca");
         this.controller = controller;
         setSize(500, 520);

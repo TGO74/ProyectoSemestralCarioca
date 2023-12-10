@@ -46,7 +46,7 @@ public class Jugador {
         this.puesto = puesto;
     }
 
-//Metodo recoger carta
+    //Metodo recoger carta
     public void recogerCarta(Carta carta){
         mano.agregarCarta(carta);
     }

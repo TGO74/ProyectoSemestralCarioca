@@ -66,7 +66,7 @@ public class JuegoCarioca {
     }
 
 
-   // Método para iniciar el juego, repartiendo las cartas a los jugadores y crando nueva partida
+    // Método para iniciar el juego, repartiendo las cartas a los jugadores y crando nueva partida
     public void iniciarJuego(ArrayList<Jugador> jugadores) {
         baraja.repartirCartas(jugadores);
         Partida partida = new Partida(jugadores);
@@ -87,7 +87,7 @@ public class JuegoCarioca {
     }
 
 
-   //Método para finalizar el juego, indicando los resultados con el metodo getResultado
+    //Método para finalizar el juego, indicando los resultados con el metodo getResultado
     public void finalizarJuego(ArrayList<Jugador> jugadores) {
         for (Jugador jugador : jugadores) {
             jugador.mostrarMano();
@@ -168,7 +168,7 @@ public class JuegoCarioca {
 
 
 
-   public void agregarJugador(String nombre){
+    public void agregarJugador(String nombre){
         Jugador jugador = new Jugador(nombre);
         jugadores.add(jugador);
     }

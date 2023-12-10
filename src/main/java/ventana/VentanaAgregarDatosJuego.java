@@ -4,8 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.JuegoCariocaController;
-import modelo.Carta;
+import Controller.JuegoCariocaController;
 import modelo.Jugador;
 
 public class VentanaAgregarDatosJuego extends JFrame implements ActionListener {
@@ -48,8 +47,7 @@ public class VentanaAgregarDatosJuego extends JFrame implements ActionListener {
 
     private void generarBotonVolverAlMenu() {
         botonVolverAlMenu = new JButton("Volver al Menú Principal");
-        botonVolverAlMenu.setBounds(175, 220,
-                200, 40);
+        botonVolverAlMenu.setBounds(175, 220, 200, 40);
         add(botonVolverAlMenu);
         botonVolverAlMenu.addActionListener(this);
     }
@@ -70,7 +68,7 @@ public class VentanaAgregarDatosJuego extends JFrame implements ActionListener {
 
             // Validar que el nombre no sea vacío y agregarlo a la lista de jugadores
             if (nombre != null && !nombre.isEmpty()) {
-                if (controller.getJugadores().length() < 4) {
+                if (controller.getJugadores().size() < 4) {
                     controller.agregarJugador(nombre);
                     actualizarAreaJugadores();
                 } else {
@@ -91,15 +89,16 @@ public class VentanaAgregarDatosJuego extends JFrame implements ActionListener {
     }
 
     private void actualizarAreaJugadores() {
-        // Actualizar el área de texto con los jugadores y sus cartas
+        // Actualizar el área de texto con los jugadores agregados
         StringBuilder jugadoresText = new StringBuilder("Jugadores:\n");
         for (Jugador jugador : controller.getJugadores()) {
-            jugadoresText.append(jugador.getNombre()).append(": ");
-            for (Carta carta : jugador.getMano().getCartas()) {
-                jugadoresText.append(carta.toString()).append(" ");
-            }
-            jugadoresText.append("\n");
+            jugadoresText.append(jugador.getNombre()).append("\n");
         }
         areaJugadores.setText(jugadoresText.toString());
+    }
+
+    //setvisible(boolean visible)
+    public void setVisible(boolean visible){
+        super.setVisible(visible);
     }
 }

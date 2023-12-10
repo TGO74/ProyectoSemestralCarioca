@@ -1,10 +1,11 @@
-package controller;
+package Controller;
 
 import modelo.Carta;
-import modelo.JuegoCarioca;
 import modelo.Jugador;
+import modelo.JuegoCarioca;
 
 import java.io.IOException;
+import java.util.List;
 
 public class JuegoCariocaController {
 
@@ -35,8 +36,8 @@ public class JuegoCariocaController {
         juegoCarioca.finalizarJuego(juegoCarioca.getJugadores());
     }
 
-    public String getJugadores() {
-        return juegoCarioca.getJugadores().toString();
+    public List<Jugador> getJugadores() {
+        return juegoCarioca.getJugadores();
     }
 
     public Jugador getGanador() {
@@ -52,7 +53,7 @@ public class JuegoCariocaController {
     }
 
     public void guardarPartida() throws IOException {
-        juegoCarioca.guardarPartida(getJugadores());
+        juegoCarioca.guardarPartida(getJugadores().toString());
     }
 
     public void mostrarPartidas() {
@@ -76,6 +77,4 @@ public class JuegoCariocaController {
     public Jugador getJugadorActual(){
         return juegoCarioca.getJugadorActual();
     }
-
-
 }
