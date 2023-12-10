@@ -26,4 +26,13 @@ public class Mano {
     public int size() {
         return cartasMano.size();
     }
+
+    public Carta[] getCartas() {
+
+        Carta[] cartas = new Carta[cartasMano.size()];
+        for (int i = 0; i < cartasMano.size(); i++) {
+            cartas[i] = cartasMano.get(i);
+        }
+        return cartas;
+    }
 }
